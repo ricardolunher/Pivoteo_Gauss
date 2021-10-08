@@ -1,0 +1,19 @@
+def pivoteo_columnas(M, v):
+    #Pivoteo parcial por columnas. Variables para indicar el tamaño de la matriz:
+    t = np.shape(M)
+    n = t[0]
+    for j in range(0,n-1,1):
+        colM = abs(M[j:,j])
+        maxM = np.argmax(colM)
+        
+        if(maxM != 0):
+            aux = np.copy(M[:,j])
+            M[:,j] = M[:,maxM+j]
+            M[:,maxM+j] = aux
+            print(M)
+            auxv = np.copy(v[j])
+            v[j] = v[maxM+j]
+            v[maxM+j] = auxv
+            print(v)
+        return M, v
+print("Pivoteo por filas: ",pivoteo_filas(A_np, b_np))
