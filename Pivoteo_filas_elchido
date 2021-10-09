@@ -1,0 +1,24 @@
+def pivoteo(A, b):
+    #Esta parte nos ayudará para indicar el tamaño de la matriz
+    tam = np.shape(A)
+    n = tam[0]
+    #Aqui haremos el pivoteo
+    for i in range(0,n-1,1):
+        colA = abs(A[i:,i])
+        MaxA = np.argmax(colA)
+        #Esta parte nos ayudará a intercambiar las filas  
+        if(MaxA != 0):
+            temporal = np.copy(A[i,:])
+            A[i,:] = A[MaxA+i,:]
+            A[MaxA+i,:] = temporal
+            
+            temporalb = np.copy(b[i])
+            b[i] = b[MaxA+i]
+            b[MaxA+i] = temporalb
+            
+            print (A)
+            print (b)
+    return A 
+    return b
+
+a=pivoteo(coef1_np,b1_np)
