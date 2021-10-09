@@ -1,24 +1,25 @@
 import numpy as np 
-def pivoteo_filas(M, v):
-    #Pivoteo parcial por filas. Variables para indicar el tamaño de la matriz:
-    t = np.shape(M)
-    n = t[0]
+def pivoteo(A, b):
+    #Esta parte nos ayudará para indicar el tamaño de la matriz
+    tam = np.shape(A)
+    n = tam[0]
+    #Aqui haremos el pivoteo
     for i in range(0,n-1,1):
-        colM = abs(M[i:,i])
-        #colv = abs(v[i])
-        maxM = np.argmax(colM)
-        #maxv = np.argmax(colv)
-        
-        if(maxM != 0):
-            aux = np.copy(M[i,:])
-            M[i,:] = M[maxM+i,:]
-            M[maxM+i,:] = aux
-            print(M)
-        #if(maxv != 0):
-            auxv = np.copy(v[i])
-            v[i] = v[maxM+i]
-            v[maxM+i] = auxv
-            print(v)
-        return M, v
-     
-print("Pivoteo por filas: ",pivoteo_filas(A_np, b_np))
+        colA = abs(A[i:,i])
+        MaxA = np.argmax(colA)
+        #Esta parte nos ayudará a intercambiar las filas  
+        if(MaxA != 0):
+            temporal = np.copy(A[i,:])
+            A[i,:] = A[MaxA+i,:]
+            A[MaxA+i,:] = temporal
+            
+            temporalb = np.copy(b[i])
+            b[i] = b[MaxA+i]
+            b[MaxA+i] = temporalb
+            
+            print (A)
+            print (b)
+    return A 
+    return b
+
+a=pivoteo(coef1_np,b1_np)
